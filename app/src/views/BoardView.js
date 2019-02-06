@@ -9,17 +9,11 @@ class BoardView extends React.Component {
         this.props.getBrokenItems();
     }
 
-    render() {
-        let cards = <h2>Loading...</h2>;
-        if (!this.props.pending)
-            cards = this.props.items.map(item => <ItemCard key={item.equipmentId} item={item} />);
-
+    render() { 
         return (
             <div>
                 <h1>Unresolved Claims</h1>
-                <div style={{ display: 'flex', flexFlow: 'row wrap' }}>
-                    {cards}
-                </div>
+             
                 
             </div>
         )

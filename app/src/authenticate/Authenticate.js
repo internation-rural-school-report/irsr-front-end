@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./login";
+import Login from "./Login";
 
 const Authenticate = App =>
   class extends React.Component {
@@ -8,7 +8,7 @@ const Authenticate = App =>
     };
 
     componentDidMount() {
-      if (!localStorage.getItem('access_token')) {
+      if (!localStorage.getItem('jwt')) {
         this.setState({ loggedIn: false });
       } else {
         this.setState({ loggedIn: true });
