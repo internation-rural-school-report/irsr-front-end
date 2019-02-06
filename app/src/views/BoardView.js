@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getBrokenItems } from '../actions/HomeActions';
+import { getIssues } from '../actions/HomeActions';
 import ItemCard from '../components/ItemCard';
 
 class BoardView extends React.Component {
     componentDidMount() {
-        this.props.getBrokenItems();
+        this.props.getIssues();
     }
 
     render() { 
@@ -25,4 +25,4 @@ const mapStateToProps = (state, ownProps) => {
     };
 }
 
-export default connect(mapStateToProps, { getBrokenItems})(BoardView);
+export default connect(mapStateToProps, { getIssues})(BoardView);

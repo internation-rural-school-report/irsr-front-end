@@ -12,7 +12,7 @@ class App extends React.Component {
       <div id="page-wrapper">
         <Navbar isBoard="true"/>
         <article id="main">
-          <Route exact path='/' render={(props) => <BoardView {...props}/>} />
+          <Route exact path='/' render={(props) => <HomeView {...props}/>} />
           <Route path='/home' render={(props) => <HomeView {...props}/>} />
           <Route path='/issue/:id' render={(props) => <IssueView id={props.match.params.id} {...props} />} />
         </article>

@@ -1,31 +1,24 @@
-import axios from 'axios';
-import { getServerLink } from '../utils/parameters';
+import axios from "axios";
+import { AdminIssuesAddress } from "../utils/parameters";
 
-export const PENDING_GET_ITEMS = 'PENDING_GET_ITEMS';
-export const PENDING_GET_ITEMS_BROKEN = 'PENDING_GET_ITEMS_BROKEN';
-export const SUCCESS_GET_ITEMS = 'SUCCESS_GET_ITEMS';
-export const ERROR_GET_ITEMS = 'ERROR_GET_ITEMS';
+export const PENDING_GET_ISSUES = "PENDING_GET_ISSUES";
+export const SUCCESS_GET_ISSUES = "SUCCESS_GET_ISSUES";
+export const ERROR_GET_ISSUES = "ERROR_GET_ISSUES";
 
-export const getBrokenItems = _ => dispatch => {
-    dispatch({ type: PENDING_GET_ITEMS_BROKEN });
-    axios
-        .get(getServerLink('/'))
-        .then(({ data }) => {
-            dispatch({ type: SUCCESS_GET_ITEMS, payload: data});
-        })
-        .catch(err => {
-            dispatch({ type: ERROR_GET_ITEMS, payload: err});
-        });
-};
-
-export const getItems = _ => dispatch => {
-    dispatch({ type: PENDING_GET_ITEMS });
-    axios
-        .get(getServerLink('/equipment'))
-        .then(({ data }) => {
-            dispatch({ type: SUCCESS_GET_ITEMS, payload: data});
-        })
-        .catch(err => {
-            dispatch ({ type: ERROR_GET_ITEMS, payload: err});
-        })
+export const getIssues = _ => dispatch => {
+  dispatch({ type: PENDING_GET_ISSUES });
+  const token = localStorage.getItem('jwt')
+  const options = {
+      headers: {
+          Authorization: token,
+      },
+  };
+  axios
+    .get(AdminIssuesAddress, options)
+    .then(({ data }) => {
+      dispatch({ type: SUCCESS_GET_ISSUES, payload: data });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR_GET_ISSUES, payload: err });
+    });
 };
