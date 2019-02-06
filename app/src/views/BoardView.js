@@ -13,8 +13,6 @@ class BoardView extends React.Component {
         return (
             <div>
                 <h1>Unresolved Claims</h1>
-             
-                
             </div>
         )
     }
